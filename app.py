@@ -1,20 +1,12 @@
 from flask import Flask, render_template
-
+from database import load_projects_from_db
 app = Flask(__name__)
-projects=[
-  {'id':1,
-  'projects':'web scrapping',
-  'skills':'urllib python,python ,Reguests,selenium'},
-  {'id':2,
-  'projects':'Ai model for flare mointoring',
-  'skills':'python padas,matblotlib,microsoft azure,pychatgpt'}
 
-  
-]
 
 
 @app.route('/')
 def hello_world():
+  projects=load_projects_from_db()
   return render_template('home.html',myskills= projects,
                        myname='Remas saud' )
   
